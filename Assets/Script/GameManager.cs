@@ -1,3 +1,4 @@
+using Script.Core;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -5,12 +6,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI wattText;
-    private float watts = 0;
-    private float wattsPerSecond = 1;
 
     public Button upButton;
     public Button downButton;
     public Button spendButton;
+    
+    public WattState wattState;
 
 
 
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        wattText.text = "Watts: " + watts.ToString("F2");
+        wattText.text = "Watts: " + wattState.TotalWatts.ToString("F2");
         
         
     }
@@ -61,9 +62,9 @@ public class GameManager : MonoBehaviour
 
     public void OnSpendButtonPressed()
     {
-        if(watts >= 10)
+        if(wattState.Dollars >= 10)
         {
-            watts -= 10;
+            wattState.Dollars -= 10;
             IncreaseWatts();
 
         }
@@ -79,17 +80,17 @@ public class GameManager : MonoBehaviour
 
     void GenerateWatts()
     {
-        watts += wattsPerSecond;
+        wattState.TotalWatts += wattState.wattsPerSecond;
     }
 
     void IncreaseWatts()
     {
-        wattsPerSecond += 1;
+        wattState.wattsPerSecond += 1;
 
     }
 
     void DecreaseWatts()
     {
-        wattsPerSecond -= 1;
+        wattState.wattsPerSecond -= 1;
     }
 }

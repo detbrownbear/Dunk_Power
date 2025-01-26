@@ -718,6 +718,8 @@ MonoBehaviour:
   wattText: {fileID: 1046495163}
   upButton: {fileID: 0}
   downButton: {fileID: 0}
+  spendButton: {fileID: 0}
+  wattState: {fileID: 11400000, guid: 0d9a3ffe76508f549b00bf16538914dc, type: 2}
 --- !u!4 &1017211730
 Transform:
   m_ObjectHideFlags: 0
