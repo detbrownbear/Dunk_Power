@@ -3,94 +3,30 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
-{
-    public TextMeshProUGUI wattText;
+public class GameManager : MonoBehaviour {
 
-    public Button upButton;
-    public Button downButton;
-    public Button spendButton;
+    public int consumptionPerSecond;
+    public float dollarsPerWatt;
     
     public WattState wattState;
 
-
-
-    void Start()
-    {
+    void Start() {
         InvokeRepeating("GenerateWatts", 1f, 1f);
-
-        if (upButton != null)
-        {
-            upButton.onClick.AddListener(OnUpButtonPressed);
-        }
-        else
-        {
-            Debug.LogError("Up Button reference is not assigned.");
-        }
-
-        if (downButton != null)
-        {
-            downButton.onClick.AddListener(OnDownButtonPressed);
-        }
-        else
-        {
-            Debug.LogError("Down Button reference is not assigned.");
-        }
-        if (spendButton != null)
-        {
-            spendButton.onClick.AddListener(OnSpendButtonPressed);
-        }
-        else
-        {
-            Debug.LogError("Down Button reference is not assigned.");
-        }
+        wattState.Dollars = 100;
     }
-
-    void Update()
-    {
-        wattText.text = "Watts: " + wattState.TotalWatts.ToString("F2");
-        
-        
-    }
-
-
-    public void OnUpButtonPressed()
-    {
-        IncreaseWatts();    
-        Debug.Log("Up Button was pressed!");
-    }
-
-    public void OnSpendButtonPressed()
-    {
-        if(wattState.Dollars >= 10)
-        {
-            wattState.Dollars -= 10;
-            IncreaseWatts();
-
-        }
-        Debug.Log("Spend Button was pressed!");
-    }
-
-    public void OnDownButtonPressed()
-    {
-        DecreaseWatts();
-        Debug.Log("Down Button was pressed!");
-    }
-
-
-    void GenerateWatts()
-    {
+    
+    void GenerateWatts() {
         wattState.TotalWatts += wattState.wattsPerSecond;
-    }
 
-    void IncreaseWatts()
-    {
-        wattState.wattsPerSecond += 1;
+        if (wattState.TotalWatts > 0) {
+            var toSubtract = consumptionPerSecond < wattState.TotalWatts ? consumptionPerSecond : wattState.TotalWatts;
+            wattState.Dollars += (ulong)toSubtract * dollarsPerWatt;
+            wattState.TotalWatts -= toSubtract;
+        }
 
+        if (wattState.TotalWatts > wattState.MaxStorageWatts) {
+            wattState.TotalWatts = wattState.MaxStorageWatts;
+        }
     }
-
-    void DecreaseWatts()
-    {
-        wattState.wattsPerSecond -= 1;
-    }
+    
 }
