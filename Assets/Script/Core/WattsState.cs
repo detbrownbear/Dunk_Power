@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace Script.Core {
@@ -16,6 +17,7 @@ namespace Script.Core {
 
         public BigInteger wattsPerSecond;
 
+        public List<Item> AvailableItems;
         public BigInteger TotalWatts {
             get => _totalWatts;
             set {

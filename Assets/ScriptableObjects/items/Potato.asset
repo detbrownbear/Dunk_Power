@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4fb634d25ff4e54b6ed407f367ada0f, type: 3}
-  m_Name: WattState
+  m_Script: {fileID: 11500000, guid: 25f8e737b8de4e01ad4bc1541939b970, type: 3}
+  m_Name: Potato
   m_EditorClassIdentifier: 
-  AvailableItems:
-  - {fileID: 11400000, guid: 3f710d114178fd147af13ac9b9f05f91, type: 2}
-  - {fileID: 11400000, guid: 42af51ad7440ab04eac6cb75c5235a69, type: 2}
+  Name: Potato
+  BaseCost: 5
+  WattsPerSecond: 1
+  WattStorage: 0
+  PurchasedCount: 0
+  IncreasePerPurchase: 1

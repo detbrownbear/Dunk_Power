@@ -4,40 +4,37 @@ using TMPro;
 using UnityEngine;
 
 public class BuyButton : MonoBehaviour  {
-    
-    [SerializeField]
-    private int cost;
-    [SerializeField]
-    private string itemName;
-    [SerializeField]
-    private ulong wattsPerSecond;
-    [SerializeField]
-    private ulong wattStorage;
+    private Item _item;
     
     [SerializeField]
     private WattState wattState;
     private TMP_Text buttonText;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() {
+    
+    
+    void Awake() {
         buttonText = GetComponentInChildren<TMP_Text>();
+    }
+    
+    public void SetupItem(Item item) {
+        _item = item;
         UpdateButtonText();
     }
 
     private void UpdateButtonText() {
-        var wps = wattsPerSecond > 0 ? $"{wattsPerSecond}W/s" : "";
-        var ws = wattStorage > 0 ? $"{wattStorage}W" : "";
-        buttonText.text = @$"{itemName}
- ${cost}
- {wps}
- {ws}";
+        var wps = _item.WattsPerSecond > 0 ? $"+{_item.WattsPerSecond} W/s" : "";
+        var ws = _item.WattStorage > 0 ? $"+{_item.WattStorage} W" : "";
+        buttonText.text = @$"{_item.Name} ({_item.ActualPrice})
+{wps}
+{ws}";
     }
     
 
     public void OnButtonClick() {
-        if(wattState.Dollars >= cost) {
-            wattState.Dollars -= cost;
-            wattState.wattsPerSecond += wattsPerSecond;
-            wattState.MaxStorageWatts += wattStorage;
+        if(wattState.Dollars >= _item.ActualPrice) {
+            wattState.Dollars -= _item.ActualPrice;
+            wattState.wattsPerSecond += _item.WattsPerSecond;
+            wattState.MaxStorageWatts += _item.WattStorage;
+            _item.PurchasedCount++;
             UpdateButtonText();
         }
     }

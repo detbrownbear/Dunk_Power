@@ -282,8 +282,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f933751e93182a64cabfe607a98b7356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
-  itemName: 
-  wattsPerSecond: 0
-  wattStorage: 0
-  wattState: {fileID: 0}
+  wattState: {fileID: 11400000, guid: 0d9a3ffe76508f549b00bf16538914dc, type: 2}
