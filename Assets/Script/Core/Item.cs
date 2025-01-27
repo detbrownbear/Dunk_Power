@@ -9,8 +9,8 @@ namespace Script.Core {
         public ulong WattsPerSecond;
         public ulong WattStorage;
         public ulong PurchasedCount;
-        public ulong IncreasePerPurchase;
+        public float IncreasePerPurchase = 1.15f;
         
-        public ulong ActualPrice => BaseCost + (PurchasedCount * IncreasePerPurchase);
+        public ulong ActualPrice => (ulong)(BaseCost * (Mathf.Pow(IncreasePerPurchase, PurchasedCount)));
     }
 }

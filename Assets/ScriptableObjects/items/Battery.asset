@@ -17,4 +17,4 @@ MonoBehaviour:
   WattsPerSecond: 0
   WattStorage: 1
   PurchasedCount: 0
-  IncreasePerPurchase: 10
+  IncreasePerPurchase: 1.15
