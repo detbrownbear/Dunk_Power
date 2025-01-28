@@ -22,7 +22,7 @@ public class MoneyText : MonoBehaviour {
         wattState.OnDollarsChanged -= UpdateLabel;
     }
 
-    private void UpdateLabel(float dollars) {
+    private void UpdateLabel(ulong dollars) {
         _label.text = $"Money: ${wattState.Dollars}";
     }
 

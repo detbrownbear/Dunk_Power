@@ -12,6 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fb634d25ff4e54b6ed407f367ada0f, type: 3}
   m_Name: WattState
   m_EditorClassIdentifier: 
+  wattsPerSecond: 6000070
   AvailableItems:
   - {fileID: 11400000, guid: 3f710d114178fd147af13ac9b9f05f91, type: 2}
   - {fileID: 11400000, guid: 42af51ad7440ab04eac6cb75c5235a69, type: 2}
+  - {fileID: 11400000, guid: 95d479417b4981f40b12795c26331f2f, type: 2}
+  - {fileID: 11400000, guid: 537834e42b094ea49ab881f1d48af5f9, type: 2}
+  - {fileID: 11400000, guid: 7dd8fd97aee2b0b42860b0a65ac67900, type: 2}
+  - {fileID: 11400000, guid: c8a1257a3756cc644b9cf10d1b1a5c88, type: 2}
+  - {fileID: 11400000, guid: bc9755583ffa6e846af89151e5b92871, type: 2}
+  - {fileID: 11400000, guid: db291b186e9e1f743a50f525e5183542, type: 2}
+  - {fileID: 11400000, guid: 8eaaf2552c2dab946a74f9b28063ba4b, type: 2}
+  - {fileID: 11400000, guid: 849a866a51519ee4993ceb22644cee84, type: 2}
+  - {fileID: 11400000, guid: d0cb7159388327e43829f0d181509eae, type: 2}
+  - {fileID: 11400000, guid: af9da961a4dcb684bbeb4821d1ba40c2, type: 2}
+  - {fileID: 11400000, guid: 36e49da30d623504b9ec51fba63cad84, type: 2}
+  - {fileID: 11400000, guid: 623a8d4bcb1d898468390c73a7c5c8d4, type: 2}
+  townPopulaton: 214.33999999999818
+  timeOfDay: 150.79464424867183
+  consumptionPerPopulaton: 1

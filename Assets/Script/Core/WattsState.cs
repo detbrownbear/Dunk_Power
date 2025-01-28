@@ -9,16 +9,21 @@ namespace Script.Core {
     public class WattState : ScriptableObject {
         public event Action<BigInteger> OnTotalWattsChanged;
         public event Action<BigInteger> OnMaxStorageWattsChanged;
-        public event Action<float> OnDollarsChanged;
+        public event Action<ulong> OnDollarsChanged;
 
-        private BigInteger _totalWatts;
-        private BigInteger _maxStorageWatts;
-        private float _dollars;
+        private ulong _totalWatts;
+        private ulong _maxStorageWatts;
+        private ulong _dollars;
 
-        public BigInteger wattsPerSecond;
-
+        public ulong wattsPerSecond;
         public List<Item> AvailableItems;
-        public BigInteger TotalWatts {
+        public double consumptionPerSecond => townPopulaton * GetTimeofdayModifier * consumptionPerPopulaton;
+        public double townPopulaton = 100;
+        public double timeOfDay = 0;
+        public double consumptionPerPopulaton = 1;
+        private double GetTimeofdayModifier => Math.Sin(timeOfDay / 300) + 1f;
+        
+        public ulong TotalWatts {
             get => _totalWatts;
             set {
                 if (_totalWatts != value) {
@@ -28,7 +33,7 @@ namespace Script.Core {
             }
         }
 
-        public BigInteger MaxStorageWatts {
+        public ulong MaxStorageWatts {
             get => _maxStorageWatts;
             set {
                 if (_maxStorageWatts != value) {
@@ -38,7 +43,7 @@ namespace Script.Core {
             }
         }
 
-        public float Dollars {
+        public ulong Dollars {
             get => _dollars;
             set {
                 if (_dollars != value) {
